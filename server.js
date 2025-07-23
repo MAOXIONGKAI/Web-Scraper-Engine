@@ -1,5 +1,5 @@
 import express from "express";
-import cors from "express";
+import cors from "cors";
 import Engine from "./engine/engine.js";
 
 const app = express();
