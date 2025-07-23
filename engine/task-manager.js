@@ -97,6 +97,8 @@ export default class TaskManager {
                 success_count++;
             }
         }
-        console.log(`Finished tasks execution.\n${success_count}/${tasks.length} tasks finished successfully.`);
+        const report = `Finished tasks execution.\n${success_count}/${tasks.length} tasks finished successfully.`;
+        console.log(report);
+        return report;
     }
 }

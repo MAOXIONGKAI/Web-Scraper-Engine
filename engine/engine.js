@@ -1,7 +1,7 @@
 import {chromium} from "@playwright/test";
 import TaskManager from "./task-manager.js";
 
-class Engine {
+export default class Engine {
     static async startWebCrawler(timeout=30) {
         const browser = await chromium.launch({headless: true});
         console.log("Started browser.");
@@ -28,13 +28,10 @@ class Engine {
         const [browser, page] = await Engine.startWebCrawler(10);
 
         const taskManager = new TaskManager(page);
-        await taskManager.executeTaskGroup(tasks, options);
+        const report = await taskManager.executeTaskGroup(tasks, options);
 
         await Engine.stopWebCrawler(browser, page);
+
+        return report;
     }
 }
-
-await Engine.execute("email-bomber", {
-    attempts: 1,
-    input: "yukawa.jiu@gmail.com"
-});
