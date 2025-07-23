@@ -1,0 +1,20 @@
+name: The Good Trade
+steps:
+  - action: goto
+    url: "https://www.thegoodtrade.com/features/best-newsletters-weekly-daily/"
+
+  - action: wait
+    seconds: 3
+
+  - action: type
+    selector: "body > div.wrapper.site-content.d-flex.flex-column > footer > div > div.footer__body > div.footer__subscribe > div > form > div > div > div > input"
+    text:
+
+  - action: wait
+    seconds: 2
+
+  - action: click
+    selector: "body > div.wrapper.site-content.d-flex.flex-column > footer > div > div.footer__body > div.footer__subscribe > div > form > div > div > button"
+
+  - action: waitFor
+    selector: "#b926545f02"

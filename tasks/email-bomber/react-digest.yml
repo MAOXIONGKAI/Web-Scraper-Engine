@@ -1,0 +1,20 @@
+name: React Digest
+steps:
+  - action: goto
+    url: "https://reactdigest.net/?rdt_cid=5537261615579444733&utm_campaign=baseline_202505&utm_medium=cpc&utm_source=reddit"
+
+  - action: wait
+    seconds: 3
+
+  - action: type
+    selector: "#subscriber_email"
+    text:
+
+  - action: wait
+    seconds: 2
+
+  - action: click
+    selector: "#new_subscriber > input[type=submit]:nth-child(4)"
+
+  - action: waitFor
+    selector: "body > section > div.success > p"

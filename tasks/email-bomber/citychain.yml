@@ -1,0 +1,36 @@
+name: City Chain
+steps:
+  - action: goto
+    url: "https://www.citychain.com.sg/"
+
+  - action: wait
+    seconds: 3
+
+  - action: type
+    selector: "#Email-1494292487693"
+    text:
+
+  - action: wait
+    seconds: 2
+
+  - action: click
+    selector: "#newsletter-submit-1494292487693"
+
+  - action: waitFor
+    selector: "#Email-sections--19635728482519__newsletter-popup"
+
+  - action: wait
+    seconds: 2
+
+  - action: type
+    selector: "#Email-sections--19635728482519__newsletter-popup"
+    text:
+
+  - action: wait
+    seconds: 2
+
+  - action: click
+    selector: "#newsletter-form-submit-sections--19635728482519__newsletter-popup"
+
+  - action: waitFor
+    selector: "#newsletter-sections--19635728482519__newsletter-popup > div"
