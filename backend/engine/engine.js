@@ -20,11 +20,10 @@ export default class Engine {
         console.log("Cleaned up everything.");
     }
 
-    static async execute(taskGroupName, options={
+    static async execute(tasks, options={
         attempts: 1,
         input: ""
     }) {
-        const tasks = await TaskManager.loadTasks(taskGroupName);
         const [browser, page] = await Engine.startWebCrawler(10);
 
         const taskManager = new TaskManager(page);
