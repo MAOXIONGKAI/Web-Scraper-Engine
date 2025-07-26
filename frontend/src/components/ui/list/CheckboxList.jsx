@@ -24,8 +24,16 @@ export default function CheckboxList(props) {
         setChecked(newChecked);
     };
 
+    const maxItemInContainer = 10;
+    const itemHeight = 48;
+
     return (
-        <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+        <List sx={{
+            width: '100%',
+            bgcolor: 'background.paper',
+            maxHeight: maxItemInContainer * itemHeight,
+            overflowY: 'auto',
+        }}>
             {list.map((value, index) => {
                 const labelId = `checkbox-list-label-${value}`;
 

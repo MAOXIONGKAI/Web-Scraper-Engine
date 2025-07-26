@@ -15,6 +15,7 @@ export default function TaskDashboard({loading, setLoading}) {
     const [checked, setChecked] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
     const [openErrorMessage, setOpenErrorMessage] = useState(false);
+    const [listView, setListView] = useState(true);
 
     const getTasks = async () => {
         const requestURL = `${backendURL}/api/load-tasks`;
@@ -50,7 +51,10 @@ export default function TaskDashboard({loading, setLoading}) {
         const requestConfig = {
             method: 'POST', headers: {
                 'Content-Type': 'application/json',
-            }, body: JSON.stringify({input}),
+            }, body: JSON.stringify({
+                input: input,
+                choices: checked
+            }),
         }
         setLoading(true);
         await fetch(requestURL, requestConfig)
@@ -125,21 +129,26 @@ export default function TaskDashboard({loading, setLoading}) {
                     <Button
                         variant="outlined"
                         loading={loading}
-
+                        onClick={() => setListView(true)}
                     >
                         List
                     </Button>
                     <Button
                         variant="contained"
                         loading={loading}
-
+                        onClick={() => setListView(false)}
                     >
                         Grid
                     </Button>
                 </ButtonGroup>
             </Box>
             <Box sx={{display: 'flex', width: "100%"}}>
-                {tasks && <TaskMenu tasks={tasks} checked={checked} setChecked={setChecked}/>}
+                {tasks && <TaskMenu
+                    tasks={tasks}
+                    checked={checked}
+                    setChecked={setChecked}
+                    listView={listView}
+                />}
             </Box>
             <ErrorSnackBar
                 open={openErrorMessage}

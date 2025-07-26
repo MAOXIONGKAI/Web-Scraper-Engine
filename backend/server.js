@@ -27,11 +27,15 @@ app.post("/api/load-tasks", async (req, res) => {
 })
 
 app.post("/api/execute-tasks", async (req, res) => {
-    const {input} = req.body;
+    const {input, choices} = req.body;
     if (!tasks) {
         res.status(500).send("No task(s) loaded for execution...");
         return;
     }
+    if (choices && choices.length > 0) {
+        tasks = tasks.filter(task => choices.includes(task.name));
+    }
+
     const report = await Engine.execute(tasks, {
         attempts: 1,
         input: input ?? "",
