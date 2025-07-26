@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-let tasks = null;
+let tasks = [];
 
 app.post("/api/load-tasks", async (req, res) => {
     const {taskGroupName} = req.body;
