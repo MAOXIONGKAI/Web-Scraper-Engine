@@ -68,13 +68,19 @@ export default function TaskDashboard({loading, setLoading}) {
 
     return (
         <>
-            <Box sx={{display: 'flex', width: "100%", gap: "5vw", justifyContent: "center",}}>
-                <TaskGroupOptions setValue={setTaskGroupName}/>
-                <Button
-                    variant="contained"
-                    loading={loading}
-                    onClick={getTasks}
-                >Load Tasks
+            <Box
+                sx={{
+                    display: "flex",
+                    gap: "5vw",
+                    alignItems: "flex-end",
+                    justifyContent: "center",
+                    width: "100%",
+                    margin: "auto",
+                }}
+            >
+                <TaskGroupOptions setValue={setTaskGroupName} />
+                <Button variant="contained" onClick={getTasks}>
+                    Load Tasks
                 </Button>
             </Box>
             <Input
